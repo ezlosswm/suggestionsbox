@@ -4,6 +4,8 @@ import { zod4 } from 'sveltekit-superforms/adapters';
 import { formSchema } from './schema';
 import { fail, redirect } from '@sveltejs/kit';
 
+import { makeLinkId } from '$lib';
+
 export const load: PageServerLoad = async (event) => {
 	await event.parent();
 
@@ -11,8 +13,9 @@ export const load: PageServerLoad = async (event) => {
 		form: await superValidate(zod4(formSchema))
 	};
 };
+
 export const actions = {
-	default: async ({ request, locals: { supabase, safeGetSession } }) => {
+	default: async ({ url, request, locals: { supabase, safeGetSession } }) => {
 		const form = await superValidate(request, zod4(formSchema));
 
 		if (!form.valid) {
@@ -29,7 +32,8 @@ export const actions = {
 			.upsert({
 				box_title: form.data.name,
 				user_id: user?.id,
-				public_link: 'test.com/pub/fdads'
+				url: makeLinkId(),
+				description: form.data.description
 			})
 			.select();
 
@@ -39,18 +43,6 @@ export const actions = {
 				errorMessage: 'Unknown error.'
 			});
 		}
-
-		console.log('User ID: ', user?.id);
-
-		console.log('Form Data, name: ', form.data.name);
-		console.log('Form Data, description: ', form.data.description);
-
-		const box = {
-			name: form.data.name,
-			description: form.data.description
-		};
-
-		console.log('Box: ', box);
 
 		return { form };
 	}

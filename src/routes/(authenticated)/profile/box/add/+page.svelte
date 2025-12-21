@@ -47,12 +47,6 @@
 								bind:value={$formData.description}
 								placeholder="Description (optional)"
 							/>
-							<!-- <Input
-								{...props}
-								bind:value={$formData.description}
-								type="text"
-								placeholder="Description (optional)"
-							/> -->
 						{/snippet}
 					</Form.Control>
 					<Form.Description class="text-sm">
@@ -65,7 +59,7 @@
 					{#if $submitting}
 						<span>
 							<LoaderCircle class="animate-spin" />
-						</span>Signing Up
+						</span>Creating Suggestion Box
 					{:else}
 						Create Suggestion Box
 					{/if}
