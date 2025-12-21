@@ -5,13 +5,19 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { toggleMode } from 'mode-watcher';
 
-	let { children } = $props();
+	let { data, children } = $props();
+	const session = data.session;
 </script>
 
-<header class="sticky inset-x-0 top-0 z-10 border border-border p-6">
+<header class="sticky inset-x-0 top-0 z-10 p-6">
 	<nav class="flex items-center justify-end gap-3">
 		<Button variant="link" href="/" class="text-foreground">Home</Button>
-		<Button variant="link" href="/auth/login" class="text-foreground">Login</Button>
+
+		{#if session}
+			<Button variant="link" href="/profile" class="text-foreground">Profile</Button>
+		{:else}
+			<Button variant="link" href="/auth/login" class="text-foreground">Login</Button>
+		{/if}
 
 		<Button onclick={toggleMode} variant="outline" size="icon" class="cursor-pointer">
 			<SunIcon
