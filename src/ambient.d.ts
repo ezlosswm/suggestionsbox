@@ -2,9 +2,10 @@ declare global {
 	type SuggestionBox = {
 		id: string;
 		box_title: string;
-		suggestions: Suggestion[];
+		user_id: string;
+		// suggestions: Suggestion[];
 		created_at: string;
-		public_link: string;
+		url: string;
 	};
 	type Suggestion = {
 		id: string;
