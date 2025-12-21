@@ -8,10 +8,6 @@
 	import * as Tooltip from '$lib/components/ui/tooltip/index.js';
 	import { ModeWatcher } from 'mode-watcher';
 
-	$effect(() => {
-		console.log('navigating: ', navigating);
-	});
-
 	let { children } = $props();
 </script>
 
