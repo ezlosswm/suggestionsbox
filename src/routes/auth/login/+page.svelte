@@ -7,12 +7,15 @@
 	import * as Card from '$lib/components/ui/card/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { formSchema } from './schema';
+	import { LoaderCircle } from 'lucide-svelte';
 
 	const form = superForm(defaults(zod4(formSchema)), {
 		validators: zod4(formSchema)
 	});
 
 	const { form: formData, enhance, submitting } = form;
+
+	let { data } = $props();
 </script>
 
 <Card.Root class="mx-auto mt-20 w-full max-w-md">
@@ -56,6 +59,7 @@
 				</Form.Field>
 				<Form.Button class="cursor-pointer">
 					{#if $submitting}
+						<span><LoaderCircle class="animate-spin" /></span>
 						Submitting
 					{:else}
 						Login

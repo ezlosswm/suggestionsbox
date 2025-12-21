@@ -22,17 +22,13 @@ export const actions: Actions = {
 		}
 
 		const { email, password } = form.data;
-
-		console.log('user data', email, password);
-
 		const { error } = await supabase.auth.signInWithPassword({
 			email,
 			password
 		});
 
 		if (error) {
-			console.error('error in page.server.ts', error);
-			return setError(form, '', 'Invalid credentials');
+			return setError(form, 'password', 'Incorrect password.');
 		}
 
 		redirect(303, '/auth/callback?next=/profile');

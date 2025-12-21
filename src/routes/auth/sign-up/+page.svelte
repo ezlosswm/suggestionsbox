@@ -6,6 +6,7 @@
 	import * as Form from '$lib/components/ui/form/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { formSchema } from './schema';
+	import { LoaderCircle } from 'lucide-svelte';
 
 	const form = superForm(defaults(zod4(formSchema)), {
 		validators: zod4(formSchema),
@@ -46,7 +47,7 @@
 					</Form.Control>
 					<Form.FieldErrors />
 				</Form.Field>
-				<Form.Field class="grid gap-2" {form} name="password.password">
+				<Form.Field class="grid gap-2" {form} name="password">
 					<Form.Control>
 						{#snippet children({ props })}
 							<Form.Label>Password</Form.Label>
@@ -54,14 +55,14 @@
 								{...props}
 								type="password"
 								placeholder="********"
-								bind:value={$formData.password.password}
+								bind:value={$formData.password}
 							/>
 						{/snippet}
 					</Form.Control>
 					<Form.Description>Must be at least 8 characters long.</Form.Description>
 					<Form.FieldErrors />
 				</Form.Field>
-				<Form.Field class="grid gap-2" {form} name="password.confirm">
+				<Form.Field class="grid gap-2" {form} name="confirm">
 					<Form.Control>
 						{#snippet children({ props })}
 							<Form.Label>Confirm Password</Form.Label>
@@ -69,7 +70,7 @@
 								{...props}
 								type="password"
 								placeholder="********"
-								bind:value={$formData.password.confirm}
+								bind:value={$formData.confirm}
 							/>
 						{/snippet}
 					</Form.Control>
@@ -78,7 +79,7 @@
 				</Form.Field>
 				<Form.Button class="cursor-pointer">
 					{#if $submitting}
-						Signing In
+						<span><LoaderCircle class="animate-spin" /></span>Signing In
 					{:else}
 						Sign Up
 					{/if}
