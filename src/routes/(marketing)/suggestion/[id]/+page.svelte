@@ -86,7 +86,7 @@
 				<div class="mt-8 flex justify-end">
 					<Form.Button
 						onclick={() => toast.success('Suggestion submitted successfully!')}
-						class="cursor-pointer border bg-blue-500 text-foreground hover:bg-blue-600"
+						class="cursor-pointer border bg-blue-500 text-white hover:bg-blue-600"
 					>
 						{#if $submitting}
 							<LoaderCircle class="mr-2 animate-spin" />

@@ -20,7 +20,7 @@
 
 <Card.Root class="mx-auto mt-20 w-full max-w-md">
 	<Card.Header>
-		<Card.Title class="text-2xl">Login to your account</Card.Title>
+		<Card.Title class="text-xl">Login to your account</Card.Title>
 		<Card.Description>Enter your email below to login to your account</Card.Description>
 		<Card.Action>
 			<Button variant="link" href="/auth/sign-up" class="cursor-pointer">Sign Up</Button>
@@ -28,7 +28,7 @@
 	</Card.Header>
 	<Card.Content>
 		<form method="POST" use:enhance>
-			<div class="grid space-y-6">
+			<div class="grid space-y-4">
 				<Form.Field class="grid gap-2" {form} name="email">
 					<Form.Control>
 						{#snippet children({ props })}

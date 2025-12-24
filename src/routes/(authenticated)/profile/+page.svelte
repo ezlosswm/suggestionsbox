@@ -33,7 +33,7 @@
 						<Label for="name">Name</Label>
 						<Input id="name" type="text" placeholder="John Doe" disabled />
 					</div>
-					<Button class="w-full cursor-pointer" disabled>Save changes</Button>
+					<Form.Button class="w-full cursor-pointer " disabled>Save changes</Form.Button>
 				</div>
 			</form>
 			<Button onclick={deleteAccount} variant="destructive" class="w-full cursor-pointer"

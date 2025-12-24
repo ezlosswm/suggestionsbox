@@ -18,7 +18,7 @@
 
 <Card.Root class="mx-auto mt-20 w-full max-w-md">
 	<Card.Header>
-		<Card.Title class="text-2xl">Signup</Card.Title>
+		<Card.Title class="text-xl">Signup</Card.Title>
 		<Card.Description>Enter your information below to create your account</Card.Description>
 	</Card.Header>
 	<Card.Content>

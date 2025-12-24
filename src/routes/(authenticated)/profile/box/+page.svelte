@@ -91,7 +91,10 @@
 </Card.Root>
 
 {#snippet Box(suggestionBox: SuggestionBox)}
-	<Card.Root class="bg-muted" id={`suggestion-${suggestionBox.id}`}>
+	<Card.Root
+		class=" hover:bg-gradient text-card-foreground hover:border-t-foreground/20 hover:bg-linear-0 hover:from-background/1 hover:from-92% hover:to-foreground/7 hover:shadow-md dark:bg-card-foreground/8"
+		id={`suggestion-${suggestionBox.id}`}
+	>
 		<Card.Header>
 			<Card.Title class="text-lg font-medium">
 				{suggestionBox.box_title}
