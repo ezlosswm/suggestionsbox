@@ -5,59 +5,6 @@
 	import { convertTimeZone } from '$lib';
 	import { onMount } from 'svelte';
 
-	/**
-	 * Dummy test data
-	 */
-	// const suggestionBoxes: SuggestionBox[] = [
-	// 	{
-	// 		id: '1',
-	// 		box_title: 'Box Title',
-	// 		created_at: '18/12/2025',
-	// 		url: 'localhost:5173/pub/94819', // Generated link
-	// 		suggestions: [
-	// 			{
-	// 				id: '1',
-	// 				name: 'Suggestion Title 1',
-	// 				description: 'This is the suggestion description.',
-	// 				created_at: '12/18/2025'
-	// 			},
-	// 			{
-	// 				id: '2',
-	// 				name: 'Suggestion Title 2',
-	// 				description: 'This is another suggestion description.',
-	// 				created_at: '12/20/2025'
-	// 			}
-	// 		]
-	// 	},
-	// 	{
-	// 		id: '2',
-	// 		box_title: 'Another Box Title',
-	// 		created_at: '19/12/2025',
-	// 		url: 'localhost:5173/pub/0394819', // Generated link
-	// 		suggestions: [
-	// 			{
-	// 				id: '1',
-	// 				name: 'Suggestion Title 1',
-	// 				description: 'This is the suggestion description.',
-	// 				created_at: '12/18/2025'
-	// 			},
-	// 			{
-	// 				id: '2',
-	// 				name: 'Suggestion Title 2',
-	// 				description: 'This is another suggestion description.',
-	// 				created_at: '12/20/2025'
-	// 			},
-
-	// 			{
-	// 				id: '3',
-	// 				name: 'Suggestion Title 3',
-	// 				description: 'This is another suggestion description.',
-	// 				created_at: '12/20/2025'
-	// 			}
-	// 		]
-	// 	}
-	// ];
-
 	let { data } = $props();
 	const suggestionBoxes: SuggestionBox[] = $derived(data.suggestionBoxes ?? []);
 
@@ -68,27 +15,23 @@
 	});
 </script>
 
-<Card.Root class="border-none shadow-none">
-	<Card.Header class="flex flex-col">
-		<div class="flex w-full items-center justify-between">
-			<Card.Title>Suggestion Boxes</Card.Title>
-			<Card.Action>
-				<Button
-					href="/profile/box/add"
-					variant="link"
-					class="cursor-pointer bg-green-600 text-white hover:bg-green-700"
-					>New Suggestion Box</Button
-				>
-			</Card.Action>
+<section class="mx-auto w-full max-w-4xl border-none shadow-none">
+	<div class="mb-6 flex flex-col">
+		<div class="flex w-full items-center justify-between border">
+			<h1 class="text-lg font-medium">Suggestion Boxes</h1>
+			<Button
+				href="/profile/box/add"
+				class="cursor-pointer bg-green-500 text-white hover:bg-green-600">New Suggestion Box</Button
+			>
 		</div>
-		<Card.Description>Manage your links here.</Card.Description>
-	</Card.Header>
-	<Card.Content class="grid gap-3">
+		<p class="text-sm text-muted-foreground">Manage your links here.</p>
+	</div>
+	<div class="grid gap-2 pt-4 md:grid-cols-2">
 		{#each suggestionBoxes as box}
 			{@render Box(box)}
 		{/each}
-	</Card.Content>
-</Card.Root>
+	</div>
+</section>
 
 {#snippet Box(suggestionBox: SuggestionBox)}
 	<Card.Root
