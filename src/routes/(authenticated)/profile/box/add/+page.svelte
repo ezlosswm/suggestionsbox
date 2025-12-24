@@ -56,7 +56,7 @@
 					<Form.FieldErrors />
 				</Form.Field>
 				<Form.Button
-					class="w-fit cursor-pointer justify-end bg-blue-500 text-foreground hover:bg-blue-600"
+					class="w-fit cursor-pointer justify-end bg-blue-500 text-white hover:bg-blue-600"
 				>
 					{#if $submitting}
 						<span>

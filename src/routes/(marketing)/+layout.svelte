@@ -31,4 +31,6 @@
 	</nav>
 </header>
 
-{@render children()}
+<main class="mx-auto w-full max-w-3xl p-3">
+	{@render children()}
+</main>

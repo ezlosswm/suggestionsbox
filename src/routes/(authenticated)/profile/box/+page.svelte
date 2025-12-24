@@ -35,7 +35,7 @@
 
 {#snippet Box(suggestionBox: SuggestionBox)}
 	<Card.Root
-		class=" hover:bg-gradient text-card-foreground hover:border-t-foreground/20 hover:bg-linear-0 hover:from-background/1 hover:from-92% hover:to-foreground/7 hover:shadow-md dark:bg-card-foreground/8"
+		class="hover:bg-gradient gap-2 text-card-foreground hover:border-t-foreground/20 hover:bg-linear-0 hover:from-background/1 hover:from-92% hover:to-foreground/7 hover:shadow-md dark:bg-card-foreground/8"
 		id={`suggestion-${suggestionBox.id}`}
 	>
 		<Card.Header>
@@ -45,8 +45,9 @@
 		</Card.Header>
 		<Card.Content class="flex justify-between">
 			<div class="space-y-2 text-sm">
-				<div class="flex items-center gap-2 text-muted-foreground">
-					<span><Clock class="size-4" /></span>
+				<div class="text-base">{suggestionBox.description}</div>
+				<div class="flex items-center gap-2 text-sm text-muted-foreground">
+					<Clock class="size-4" />
 					<p>
 						{convertTimeZone(suggestionBox.created_at)}
 					</p>
