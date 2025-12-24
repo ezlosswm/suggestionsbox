@@ -17,7 +17,7 @@
 
 <section class="mx-auto w-full max-w-4xl border-none shadow-none">
 	<div class="mb-6 flex flex-col">
-		<div class="flex w-full items-center justify-between border">
+		<div class="flex w-full items-center justify-between">
 			<h1 class="text-lg font-medium">Suggestion Boxes</h1>
 			<Button
 				href="/profile/box/add"
