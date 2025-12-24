@@ -9,8 +9,8 @@
 	import { Textarea } from '$lib/components/ui/textarea';
 
 	const form = superForm(defaults(zod4(formSchema)), {
-		validators: zod4(formSchema),
-		dataType: 'json'
+		validators: zod4(formSchema)
+		// dataType: 'json'
 	});
 
 	const { form: formData, enhance, submitting } = form;
@@ -55,7 +55,9 @@
 					</Form.Description>
 					<Form.FieldErrors />
 				</Form.Field>
-				<Form.Button class="w-fit cursor-pointer justify-end">
+				<Form.Button
+					class="w-fit cursor-pointer justify-end bg-blue-500 text-foreground hover:bg-blue-600"
+				>
 					{#if $submitting}
 						<span>
 							<LoaderCircle class="animate-spin" />

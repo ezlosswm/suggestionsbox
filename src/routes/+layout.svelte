@@ -4,7 +4,7 @@
 	import { navigating } from '$app/state';
 	import { expoOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
-
+	import { Toaster } from '$lib/components/ui/sonner/index.js';
 	import * as Tooltip from '$lib/components/ui/tooltip/index.js';
 	import { ModeWatcher } from 'mode-watcher';
 
@@ -26,6 +26,7 @@
 {/if}
 
 <ModeWatcher />
+<Toaster position="top-right" duration={4000} />
 <Tooltip.Provider>
 	{@render children()}
 </Tooltip.Provider>

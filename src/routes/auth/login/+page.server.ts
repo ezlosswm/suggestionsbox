@@ -31,6 +31,6 @@ export const actions: Actions = {
 			return setError(form, 'password', 'Incorrect password.');
 		}
 
-		redirect(303, '/auth/callback?next=/profile');
+		throw redirect(303, '/profile');
 	}
 };

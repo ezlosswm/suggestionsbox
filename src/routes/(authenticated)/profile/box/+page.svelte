@@ -2,6 +2,7 @@
 	import * as Card from '$lib/components/ui/card/index.js';
 	import { Button } from '$lib/components/ui/button';
 	import { Clock, Link } from 'lucide-svelte';
+	import { convertTimeZone } from '$lib';
 	import { onMount } from 'svelte';
 
 	/**
@@ -64,8 +65,6 @@
 
 	onMount(() => {
 		host = window.location.host;
-
-		console.log('Host: ', host);
 	});
 </script>
 
@@ -103,7 +102,7 @@
 				<div class="flex items-center gap-2 text-muted-foreground">
 					<span><Clock class="size-4" /></span>
 					<p>
-						{suggestionBox.created_at}
+						{convertTimeZone(suggestionBox.created_at)}
 					</p>
 				</div>
 				<div class="flex gap-2">
