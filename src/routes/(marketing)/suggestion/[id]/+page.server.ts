@@ -1,26 +1,25 @@
 import { superValidate } from 'sveltekit-superforms';
 import { zod4 } from 'sveltekit-superforms/adapters';
 import { suggestionSchema } from './schema';
-import { fail } from '@sveltejs/kit';
+import { error, redirect, fail } from '@sveltejs/kit';
 
 export const load = async (event) => {
 	const urlId = event.params.id;
 	const supabase = event.locals.supabase;
 
-	const { data, error } = await supabase
+	const { data, error: suggestionBoxError } = await supabase
 		.from('suggestion_boxes')
 		.select('*')
 		.eq('id', urlId)
 		.single();
-	if (error) {
+	if (suggestionBoxError) {
 		// Handle the error appropriately +error.svelte
-		console.log('Error fetching suggestion boxes:', error);
-		return;
+		error(404, 'Suggestion box not found');
 	}
 
 	let suggestionBox: SuggestionBox = data;
 
-	const { session, user } = await event.locals.safeGetSession();
+	const { session } = await event.locals.safeGetSession();
 	if (session) {
 		let suggArray: Suggestion[] = [];
 		const { data: suggestionsData, error: suggestionsError } = await supabase
@@ -39,8 +38,6 @@ export const load = async (event) => {
 			suggestions: suggArray
 		};
 
-		console.log('Suggestion Box with suggestions:', suggestionBox);
-
 		return {
 			suggestionBox
 		};
@@ -52,7 +49,7 @@ export const load = async (event) => {
 };
 
 export const actions = {
-	default: async (event) => {
+	submitSuggestion: async (event) => {
 		const form = await superValidate(event, zod4(suggestionSchema));
 
 		if (!form.valid) {
@@ -76,5 +73,22 @@ export const actions = {
 
 		// Handle success case, e.g., redirect or success message
 		return { form };
+	},
+	deleteSuggestion: async (event) => {
+		const { session } = await event.locals.safeGetSession();
+		if (!session) {
+			return fail(401, { error: 'Unauthorized' });
+		}
+
+		const { error } = await event.locals.supabase
+			.from('suggestion_boxes')
+			.delete()
+			.eq('id', event.params.id);
+
+		if (error) {
+			return fail(500, { error: 'Failed to delete suggestion box' });
+		}
+
+		throw redirect(303, '/profile/box');
 	}
 };

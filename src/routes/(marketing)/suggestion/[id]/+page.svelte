@@ -1,5 +1,6 @@
 <script lang="ts">
 	import LoggedIn from '$lib/components/loggedIn.svelte';
+	import * as Item from '$lib/components/ui/item/index.js';
 	import * as Form from '$lib/components/ui/form/index.js';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import { defaults, superForm } from 'sveltekit-superforms';
@@ -10,7 +11,7 @@
 	import { suggestionSchema } from './schema';
 	import { Textarea } from '$lib/components/ui/textarea/index.js';
 	import { LoaderCircle } from 'lucide-svelte';
-	import { copyLink } from '$lib';
+	import { convertTimeZone, copyLink } from '$lib';
 
 	let { data } = $props();
 	let { box_title, description, suggestions } = $derived(
@@ -44,12 +45,23 @@
 					class="cursor-pointer">Share</Button
 				>
 				<ButtonGroup.Separator />
-				<Button variant="destructive" size="lg" class="cursor-pointer">Delete</Button>
+				<form action="?/deleteSuggestion" method="POST" use:enhance>
+					<Button type="submit" variant="destructive" size="lg" class="cursor-pointer"
+						>Delete</Button
+					>
+				</form>
 			</ButtonGroup.Root>
 
 			<ul class="space-y-3">
 				{#each suggestions as suggestion}
-					<li class="list-disc">{suggestion.description}</li>
+					<Item.Root variant="muted">
+						<Item.Content class="space-y-1">
+							<Item.Title class="font-normal">{suggestion.description}</Item.Title>
+							<Item.Description class="text-end text-sm font-thin"
+								>{convertTimeZone(suggestion.created_at!)}</Item.Description
+							>
+						</Item.Content>
+					</Item.Root>
 				{/each}
 			</ul>
 		{/if}
@@ -64,7 +76,7 @@
 				</Card.Description>
 				<Card.Title>{description}</Card.Title>
 			</Card.Header>
-			<form class="space-y-3 p-3" method="POST" use:enhance>
+			<form class="space-y-3 p-3" action="?/submitSuggestion" method="POST" use:enhance>
 				<Form.Field {form} name="description">
 					<Form.Control>
 						{#snippet children({ props })}
