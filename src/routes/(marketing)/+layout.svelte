@@ -6,7 +6,7 @@
 	import { toggleMode } from 'mode-watcher';
 
 	let { data, children } = $props();
-	const session = data.session;
+	const session = $derived(data.session);
 </script>
 
 <header class="sticky inset-x-0 top-0 z-10 p-6">
