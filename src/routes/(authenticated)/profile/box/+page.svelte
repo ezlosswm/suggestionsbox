@@ -26,7 +26,7 @@
 		</div>
 		<p class="text-sm text-muted-foreground">Manage your links here.</p>
 	</div>
-	<div class="grid gap-2 pt-4 md:grid-cols-2">
+	<div class="grid gap-2 pt-4">
 		{#each suggestionBoxes as box}
 			{@render Box(box)}
 		{/each}
