@@ -1,16 +1,56 @@
 <script lang="ts">
-	let { data } = $props();
+	import Button from '$lib/components/ui/button/button.svelte';
+	import { CircleUser } from 'lucide-svelte';
 </script>
 
-<div class="mx-auto my-12 max-w-xl space-y-4 text-center md:max-w-2xl">
-	<div class="mx-auto w-full max-w-sm">
-		<h1 class="text-3xl">
-			<span class="font-medium text-blue-500"> Free, </span> easy and anonymous
-			<span class="font-medium text-blue-500">suggestions</span>
-		</h1>
+<div class="flex flex-col gap-[48px] px-8 md:flex-row md:px-80">
+	<div class="max-w-xl space-y-4">
+		<div>
+			<h1 class="text-4xl font-black tracking-tight text-suggest-navy-900 md:text-6xl">
+				Gather feedback that actually
+				<span class="text-suggest-blue-700">matters.</span>
+			</h1>
+		</div>
+		<p class="text-lg text-suggest-slate-600">
+			The simplest way to collect, manage, and act on suggestions from your team or customers. No
+			more messy spreadsheets or lost emails.
+		</p>
+		<Button
+			class="cursor-pointer bg-suggest-blue-700 px-8 py-6 text-base shadow-lg hover:bg-suggest-blue-700/80 md:text-lg"
+			size="lg">Create Your Box</Button
+		>
 	</div>
-	<p class="text-xl">
-		Collect real and honest suggestions from anyone. Instantly start collecting information from
-		employees, friends, co-workers, or anyone else using an anonymous online suggestion box.
-	</p>
+
+	<div class="relative my-auto">
+		<div
+			class="absolute h-64 rounded-full bg-suggest-blue-700/20 opacity-80 blur-3xl md:w-[600px]"
+		></div>
+
+		<!-- Card -->
+		<div
+			class="relative z-10 rounded-xl bg-white p-6 text-suggest-navy-900 shadow-xl md:w-[600px]
+		"
+		>
+			<div class="mb-4 flex items-center justify-between">
+				<div class="flex items-center gap-3 text-sm">
+					<CircleUser class="size-10 stroke-suggest-slate-600 stroke-1" />
+					<div>
+						<p class="font-bold">Anonymous</p>
+						<p class="text-suggest-slate-600">2 minutes ago</p>
+					</div>
+				</div>
+			</div>
+
+			<h2 class="mb-2 text-lg font-bold">"Add dark mode support for the dashboard"</h2>
+
+			<p class="mb-4 text-sm text-gray-600">
+				It would be great for power users who spend hours working on feedback at night. Dark mode is
+				easy on the eyes.
+			</p>
+
+			<div class="flex justify-end">
+				<Button variant="ghost" class="font-medium text-suggest-blue-700">Join discussion</Button>
+			</div>
+		</div>
+	</div>
 </div>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 @import 'tailwindcss';
 
 @import 'tw-animate-css';
@@ -72,6 +74,41 @@
 	--sidebar-accent-foreground: oklch(0.985 0 0);
 	--sidebar-border: oklch(1 0 0 / 10%);
 	--sidebar-ring: oklch(0.556 0 0);
+}
+
+@theme {
+	--font-inter: 'Inter', sans-serif;
+
+	/* Core Dark / Light */
+	--color-suggest-navy-900: oklch(0.18 0.04 260); /* #0F172A */
+	--color-suggest-white: oklch(1 0 0); /* #FFFFFF */
+
+	/* Primary Blue */
+	--color-suggest-blue-700: oklch(0.45 0.27 264); /* #1111D4 */
+
+	/* Slate Scale */
+	--color-suggest-slate-500: oklch(0.52 0.04 250); /* #64748B */
+	--color-suggest-slate-600: oklch(0.43 0.04 250); /* #475569 */
+	--color-suggest-slate-400: oklch(0.65 0.04 250); /* #94A3B8 */
+	--color-suggest-slate-200: oklch(0.92 0.02 250); /* #E2E8F0 */
+
+	/* Yellow Accent */
+	--color-suggest-yellow-400: oklch(0.86 0.18 100); /* #FACC15 */
+
+	/* Neutral Surfaces */
+	--color-suggest-neutral-100: oklch(0.97 0.01 255); /* #F1F5F9 */
+	--color-suggest-neutral-50: oklch(0.98 0.01 255); /* #F6F6F8 */
+
+	/* Soft Green */
+	--color-suggest-green-700: oklch(0.48 0.1 160); /* #15803D */
+	--color-suggest-green-100: oklch(0.93 0.05 150); /* #DCFCE7 */
+
+	/* Gradient */
+	--color-suggest-linear: linear-gradient(
+		to right,
+		oklch(0.45 0.27 264 / 0.2) 0%,
+		oklch(0.45 0.27 264 / 0) 100%
+	);
 }
 
 @theme inline {
