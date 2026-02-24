@@ -3,7 +3,7 @@
 	import { CircleUser } from 'lucide-svelte';
 </script>
 
-<div class="flex flex-col gap-[48px] px-8 md:flex-row md:px-80">
+<div class="flex flex-col gap-12 px-8 md:px-40 lg:flex-row lg:px-80">
 	<div class="max-w-xl space-y-4">
 		<div>
 			<h1 class="text-4xl font-black tracking-tight text-suggest-navy-900 md:text-6xl">
@@ -23,14 +23,11 @@
 
 	<div class="relative my-auto">
 		<div
-			class="absolute h-64 rounded-full bg-suggest-blue-700/20 opacity-80 blur-3xl md:w-[600px]"
+			class="absolute h-64 rounded-full bg-suggest-blue-700/20 opacity-80 blur-3xl sm:w-150"
 		></div>
 
 		<!-- Card -->
-		<div
-			class="relative z-10 rounded-xl bg-white p-6 text-suggest-navy-900 shadow-xl md:w-[600px]
-		"
-		>
+		<div class="relative z-10 rounded-xl bg-white p-6 text-suggest-navy-900 shadow-xl sm:w-150">
 			<div class="mb-4 flex items-center justify-between">
 				<div class="flex items-center gap-3 text-sm">
 					<CircleUser class="size-10 stroke-suggest-slate-600 stroke-1" />
