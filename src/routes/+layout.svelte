@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>SuggestBox</title>
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
