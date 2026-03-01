@@ -13,6 +13,8 @@
 	import { LoaderCircle } from 'lucide-svelte';
 	import { convertTimeZone, copyLink } from '$lib';
 
+	import { page } from '$app/state';
+
 	let { data } = $props();
 	let { box_title, description, suggestions } = $derived(
 		data.suggestionBox ?? { box_title: '', description: '', suggestions: [] }
@@ -38,7 +40,7 @@
 				<Button
 					variant="secondary"
 					onclick={() => {
-						copyLink();
+						copyLink(page.url.toString());
 						toast.success('Copied!');
 					}}
 					size="lg"

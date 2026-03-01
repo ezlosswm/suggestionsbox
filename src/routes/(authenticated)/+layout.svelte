@@ -7,10 +7,6 @@
 	const user = $derived(data.session.user.user_metadata.full_name);
 </script>
 
-<svelte:head>
-	<title>Profile</title>
-</svelte:head>
-
 <Sidebar.Provider>
 	<AppSidebar />
 	<main class="w-full">
@@ -22,7 +18,7 @@
 			</div>
 		</div>
 
-		<div class=" p-6">
+		<div class="p-6">
 			{@render children?.()}
 		</div>
 	</main>

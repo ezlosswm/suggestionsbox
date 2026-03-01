@@ -10,7 +10,7 @@
 				>
 					<path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"></path>
 				</svg>
-				<h3 class="text-lg font-bold">SuggestBox</h3>
+				<h3 class="text-lg font-bold -tracking-wider">SuggestBox</h3>
 			</div>
 			<p class="text-sm text-suggest-slate-600">
 				Making feedback sollection effortless for teams around the world since 2026.

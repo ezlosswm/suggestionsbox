@@ -1,4 +1,5 @@
 <script lang="ts">
+	import google from '$lib/assets/google-color.svg';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { defaults, superForm } from 'sveltekit-superforms';
@@ -18,8 +19,12 @@
 
 <Card.Root class="mx-auto mt-20 w-full max-w-md">
 	<Card.Header>
-		<Card.Title class="text-xl">Signup</Card.Title>
-		<Card.Description>Enter your information below to create your account</Card.Description>
+		<Card.Title class="text-3xl leading-9 font-black -tracking-wider"
+			>Create your account</Card.Title
+		>
+		<Card.Description class="text-suggest-slate-600"
+			>Join SuggestBox to start sharing ideas and improving your products</Card.Description
+		>
 	</Card.Header>
 	<Card.Content>
 		<form method="POST" use:enhance>
@@ -27,7 +32,7 @@
 				<Form.Field class="grid gap-2" {form} name="name">
 					<Form.Control>
 						{#snippet children({ props })}
-							<Form.Label>Name</Form.Label>
+							<Form.Label>Full Name</Form.Label>
 							<Input {...props} bind:value={$formData.name} placeholder="John Doe" />
 						{/snippet}
 					</Form.Control>
@@ -77,30 +82,35 @@
 					<Form.Description>Please confirm your password.</Form.Description>
 					<Form.FieldErrors />
 				</Form.Field>
-				<Form.Button class="cursor-pointer">
+				<Form.Button
+					class="cursor-pointer bg-suggest-blue-700 text-suggest-white hover:bg-suggest-blue-700/80"
+				>
 					{#if $submitting}
-						<span><LoaderCircle class="animate-spin" /></span>Signing In
+						<span><LoaderCircle class="animate-spin" /></span>Creating Account
 					{:else}
-						Sign Up
+						Create Account
 					{/if}
 				</Form.Button>
 			</div>
 		</form>
 	</Card.Content>
-	<Card.Footer class="flex-col gap-2">
+	<Card.Footer class="flex-col gap-2 space-y-4">
+		<div
+			class="flex w-full items-center gap-3 text-xs font-medium tracking-[0.2em] text-suggest-slate-400 uppercase"
+		>
+			<div class="h-px flex-1 bg-suggest-slate-200"></div>
+			<span>Or sign in with</span>
+			<div class="h-px flex-1 bg-suggest-slate-200"></div>
+		</div>
 		<Button href="/auth/login/google" variant="outline" class="w-full cursor-pointer">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-				<path
-					d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
-					fill="currentColor"
-				/>
-			</svg>
+			<img src={google} alt="Google logo" />
 			Sign Up with Google
 		</Button>
 
-		<div class="text-sm text-gray-300">
+		<div class="text-sm text-suggest-slate-600">
 			Already have an account? <span
-				><Button variant="link" class="text-gray-300" href="/auth/login">Sign In</Button></span
+				><Button variant="link" class="text-suggest-slate-600" href="/auth/login">Log In</Button
+				></span
 			>
 		</div>
 	</Card.Footer>

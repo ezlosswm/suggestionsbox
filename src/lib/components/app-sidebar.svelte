@@ -8,11 +8,13 @@
 				items: [
 					{
 						title: 'Account Settings',
-						url: '/profile'
+						url: '/profile',
+						isActive: false
 					},
 					{
 						title: 'Manage Boxes',
-						url: '/profile/box'
+						url: '/profile/box',
+						isActive: false
 					}
 				]
 			}
@@ -29,10 +31,20 @@
 </script>
 
 <Sidebar.Root {...restProps} bind:ref>
-	<Sidebar.Header>
-		<Button href="/profile" variant="link" class="text-2xl">Home</Button>
+	<Sidebar.Header class="bg-suggest-white">
+		<Button href="/profile" variant="link" class="text-2xl no-underline">
+			<svg
+				class="size-6 fill-suggest-blue-700"
+				fill="currentColor"
+				viewBox="0 0 48 48"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"></path>
+			</svg>
+			<h1 class="text-xl font-black -tracking-wider">SuggestBox</h1>
+		</Button>
 	</Sidebar.Header>
-	<Sidebar.Content>
+	<Sidebar.Content class="bg-suggest-white">
 		<!-- We create a Sidebar.Group for each parent. -->
 		{#each data.navMain as group (group.title)}
 			<Sidebar.Group>

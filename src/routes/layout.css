@@ -103,6 +103,11 @@
 	--color-suggest-green-700: oklch(0.48 0.1 160); /* #15803D */
 	--color-suggest-green-100: oklch(0.93 0.05 150); /* #DCFCE7 */
 
+	--color-suggest-warning-50: oklch(0.9705 0.0129 17.38); /* #FEF2F2 */
+	--color-suggest-warning-100: oklch(0.9356 0.0309 17.72); /* #FEE2E2 */
+	--color-suggest-warning-300: oklch(0.6368 0.2078 25.33); /* #EF4444 */
+	--color-suggest-warning-400: oklch(0.5771 0.2152 27.33); /* DC2626 */
+
 	/* Gradient */
 	--color-suggest-linear: linear-gradient(
 		to right,

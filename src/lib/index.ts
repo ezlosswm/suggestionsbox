@@ -1,5 +1,3 @@
-import { page } from '$app/state';
-
 export function deleteAccount() {
 	console.log('Redirect to delete account page.');
 }
@@ -16,9 +14,9 @@ export function convertTimeZone(isoString: string) {
 	return formatter.format(dateObject);
 }
 
-export function copyLink() {
+export function copyLink(pageUrl: string) {
 	navigator.clipboard
-		.writeText(page.url.toString())
+		.writeText(pageUrl)
 		.then()
 		.catch((err) => {
 			console.error('Could not copy text: ', err);

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { defaults, superForm } from 'sveltekit-superforms';
+	import google from '$lib/assets/google-color.svg';
 
 	import { zod4 } from 'sveltekit-superforms/adapters';
 	import * as Form from '$lib/components/ui/form/index.js';
@@ -15,13 +16,30 @@
 
 	const { form: formData, enhance, submitting } = form;
 
-	let { data } = $props();
+	// let { data } = $props();
 </script>
 
 <Card.Root class="mx-auto mt-20 w-full max-w-md">
-	<Card.Header>
-		<Card.Title class="text-xl">Login to your account</Card.Title>
-		<Card.Description>Enter your email below to login to your account</Card.Description>
+	<Card.Header class="space-y-8">
+		<Card.Title>
+			<div class="flex items-center gap-2">
+				<svg
+					class="size-6 fill-suggest-blue-700"
+					fill="currentColor"
+					viewBox="0 0 48 48"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"></path>
+				</svg>
+				<h1 class="text-xl font-bold -tracking-wider">SuggestBox</h1>
+			</div>
+		</Card.Title>
+		<div class="space-y-2">
+			<Card.Title class="text-3xl leading-9 font-black -tracking-wider">Welcome back</Card.Title>
+			<Card.Description class="text-suggest-slate-600"
+				>Enter your credentials to access your account</Card.Description
+			>
+		</div>
 		<Card.Action>
 			<Button variant="link" href="/auth/sign-up" class="cursor-pointer">Sign Up</Button>
 		</Card.Action>
@@ -46,7 +64,7 @@
 				<Form.Field class="grid gap-2" {form} name="password">
 					<Form.Control>
 						{#snippet children({ props })}
-							<Form.Label>Confirm Password</Form.Label>
+							<Form.Label>Password</Form.Label>
 							<Input
 								{...props}
 								type="password"
@@ -57,25 +75,30 @@
 					</Form.Control>
 					<Form.FieldErrors />
 				</Form.Field>
-				<Form.Button class="cursor-pointer">
+				<Form.Button
+					class="cursor-pointer bg-suggest-blue-700 text-suggest-white hover:bg-suggest-blue-700/80"
+				>
 					{#if $submitting}
 						<span><LoaderCircle class="animate-spin" /></span>
 						Submitting
 					{:else}
-						Login
+						Sign In
 					{/if}
 				</Form.Button>
 			</div>
 		</form>
 	</Card.Content>
-	<Card.Footer class="flex-col gap-2">
-		<Button href="/auth/login/google" variant="outline" class="w-full cursor-pointer"
-			><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-				<path
-					d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
-					fill="currentColor"
-				/>
-			</svg>Login with Google</Button
+	<Card.Footer class="flex-col gap-2 space-y-4">
+		<div
+			class="flex w-full items-center gap-3 text-xs font-medium tracking-[0.2em] text-suggest-slate-400 uppercase"
+		>
+			<div class="h-px flex-1 bg-suggest-slate-200"></div>
+			<span>Or sign in with</span>
+			<div class="h-px flex-1 bg-suggest-slate-200"></div>
+		</div>
+		<Button href="/auth/login/google" variant="outline" class="w-full cursor-pointer">
+			<img src={google} alt="Google logo" />
+			Sign in with Google</Button
 		>
 	</Card.Footer>
 </Card.Root>
