@@ -33,7 +33,7 @@ export const actions = {
 			.upsert({
 				id: suggestionBoxIdGenerator.makeId(),
 				box_title: form.data.name,
-				user_id: user?.id,
+				user_id: session.user.id,
 				url: suggestionBoxIdGenerator.makeLinkId(),
 				description: form.data.description
 			})

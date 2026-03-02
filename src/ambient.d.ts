@@ -10,6 +10,7 @@ declare global {
 	};
 	type Suggestion = {
 		id: string;
+		name: string;
 		description: string;
 		created_at?: string;
 	};

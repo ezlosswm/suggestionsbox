@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import { toast } from 'svelte-sonner';
 	import { Copy, Check } from 'lucide-svelte';
+	import { Button } from '$lib/components/ui/button/index';
 
 	let copyStatus = $state(false);
 
@@ -20,32 +21,27 @@
 	}
 </script>
 
-<section class="space-y-3 text-center">
-	<h1 class="text-2xl font-medium">Your suggestion box has been created!</h1>
-	<p>
-		The link to your suggestion box is blow. You can send it to others and start collecting
-		feedback!
-	</p>
-
-	<div class="mt-6">
-		<div class="flex items-center justify-center gap-2 text-blue-600 hover:underline">
-			<p class="w-fit text-center">
-				{page.url}
+<section
+	class="mx-auto mt-16 h-64 max-w-2xl space-y-3 rounded-xl border-2 border-dotted bg-suggest-white p-6 text-center"
+>
+	<div class="grid place-items-center">
+		<div>
+			<h1 class="text-2xl font-bold">No suggestions yet</h1>
+			<p class="text-suggest-slate-600">
+				Share your link with your community to start gathering feedback.
 			</p>
-
-			{#if copyStatus}
-				<div id="copy-status">
-					<Check class="size-5 text-green-600" />
-				</div>
-			{:else}
-				<Copy
-					onclick={() => {
-						copyLink();
-						toast.success('Copied!');
-					}}
-					class="size-4 cursor-pointer"
-				/>
-			{/if}
 		</div>
+
+		<Button
+			onclick={() => {
+				copyLink();
+				toast.success('Copied!');
+			}}
+			class="w-60 cursor-pointer bg-suggest-blue-700 p-6 text-base font-bold text-suggest-white transition-colors hover:bg-suggest-blue-700/80"
+			size="lg"
+		>
+			<Copy class="size-6" />
+			Copy Share Link
+		</Button>
 	</div>
 </section>

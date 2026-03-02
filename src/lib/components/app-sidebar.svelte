@@ -1,20 +1,26 @@
-<script lang="ts" module>
-	import { LogOut } from 'lucide-svelte';
+<script lang="ts">
+	import { page } from '$app/state'; // SvelteKit's Svelte 5 reactive page state
+	import { LogOut, User, Package } from 'lucide-svelte';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
+	import type { ComponentProps } from 'svelte';
+
+	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
+
 	const data = {
 		navMain: [
 			{
 				title: 'Profile',
-				url: '/profile',
 				items: [
-					{
-						title: 'Account Settings',
-						url: '/profile',
-						isActive: false
-					},
 					{
 						title: 'Manage Boxes',
 						url: '/profile/box',
-						isActive: false
+						icon: Package
+					},
+					{
+						title: 'Account Settings',
+						url: '/profile',
+						icon: User
 					}
 				]
 			}
@@ -22,17 +28,9 @@
 	};
 </script>
 
-<script lang="ts">
-	import { Button } from '$lib/components/ui/button/index.js';
-	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-	import type { ComponentProps } from 'svelte';
-
-	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
-</script>
-
 <Sidebar.Root {...restProps} bind:ref>
 	<Sidebar.Header class="bg-suggest-white">
-		<Button href="/profile" variant="link" class="text-2xl no-underline">
+		<Button href="/profile" variant="link" class="text-2xl hover:no-underline">
 			<svg
 				class="size-6 fill-suggest-blue-700"
 				fill="currentColor"
@@ -45,17 +43,24 @@
 		</Button>
 	</Sidebar.Header>
 	<Sidebar.Content class="bg-suggest-white">
-		<!-- We create a Sidebar.Group for each parent. -->
 		{#each data.navMain as group (group.title)}
 			<Sidebar.Group>
 				<Sidebar.GroupLabel>{group.title}</Sidebar.GroupLabel>
 				<Sidebar.GroupContent>
-					<Sidebar.Menu>
+					<Sidebar.Menu class="space-y-2">
 						{#each group.items as item (item.title)}
+							{@const isActive = page.url.pathname === item.url}
+
 							<Sidebar.MenuItem>
-								<Sidebar.MenuButton isActive={item.isActive}>
+								<Sidebar.MenuButton
+									{isActive}
+									class="text-sm hover:bg-suggest-blue-700/20 hover:text-suggest-blue-700 data-[active=true]:bg-suggest-blue-700/10 data-[active=true]:text-suggest-blue-700"
+								>
 									{#snippet child({ props })}
-										<a href={item.url} {...props}>{item.title}</a>
+										<a href={item.url} {...props}>
+											<item.icon />
+											<span>{item.title}</span>
+										</a>
 									{/snippet}
 								</Sidebar.MenuButton>
 							</Sidebar.MenuItem>
@@ -67,7 +72,7 @@
 	</Sidebar.Content>
 	<Sidebar.Footer>
 		<Button href="/auth/logout" variant="destructive" class="cursor-pointer">
-			<span><LogOut /></span>
+			<LogOut />
 			<p>Logout</p>
 		</Button>
 	</Sidebar.Footer>

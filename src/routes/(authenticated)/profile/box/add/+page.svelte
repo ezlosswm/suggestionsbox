@@ -10,7 +10,6 @@
 
 	const form = superForm(defaults(zod4(formSchema)), {
 		validators: zod4(formSchema)
-		// dataType: 'json'
 	});
 
 	const { form: formData, enhance, submitting } = form;
@@ -38,6 +37,7 @@
 							<Form.Label class="font-semibold">Suggestion Box Name</Form.Label>
 							<Input
 								{...props}
+								class="placeholder:text-sm"
 								bind:value={$formData.name}
 								placeholder="e.g., Q4 Product Strategy Feedback"
 							/>
@@ -53,6 +53,7 @@
 						{#snippet children({ props })}
 							<Form.Label class="font-semibold">Description & Instructions</Form.Label>
 							<Textarea
+								class="h-32 placeholder:text-sm"
 								{...props}
 								bind:value={$formData.description}
 								placeholder="Explain what kind of feedback you're looking for..."

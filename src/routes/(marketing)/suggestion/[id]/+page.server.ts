@@ -57,11 +57,13 @@ export const actions = {
 		}
 
 		const { description } = form.data;
+		const { name } = form.data;
 		const id = event.params.id;
 
 		const supabase = event.locals.supabase;
 
 		const { error } = await supabase.from('suggestions').insert({
+			name,
 			description,
 			suggestion_box_id: id
 		});
@@ -71,22 +73,34 @@ export const actions = {
 			return fail(500, { form });
 		}
 
-		// Handle success case, e.g., redirect or success message
 		return { form };
 	},
-	deleteSuggestion: async (event) => {
+	deleteSuggestionBox: async (event) => {
 		const { session } = await event.locals.safeGetSession();
 		if (!session) {
 			return fail(401, { error: 'Unauthorized' });
 		}
 
-		const { error } = await event.locals.supabase
+		// 1. Log to ensure the URL param and session ID are exactly what you expect
+		console.log('Target Box ID:', event.params.id);
+		console.log('Logged in User:', session.user.id);
+
+		const { data, error } = await event.locals.supabase
 			.from('suggestion_boxes')
 			.delete()
-			.eq('id', event.params.id);
+			.eq('id', event.params.id)
+			.select(); // 2. Add .select() to return the rows that were actually deleted
 
 		if (error) {
+			console.log('Error deleting suggestion box:', error);
 			return fail(500, { error: 'Failed to delete suggestion box' });
+		}
+
+		// 3. Catch the silent failure
+		if (!data || data.length === 0) {
+			console.log("Silent Failure: 0 rows deleted. Either the ID didn't match, or RLS blocked it.");
+			// Prevent the redirect so you can debug!
+			return fail(403, { error: 'Could not delete: Not authorized or box not found.' });
 		}
 
 		throw redirect(303, '/profile/box');

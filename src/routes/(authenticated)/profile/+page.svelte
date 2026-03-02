@@ -3,9 +3,7 @@
 	import { zod4 } from 'sveltekit-superforms/adapters';
 	import { formSchema } from './schema';
 	import * as Card from '$lib/components/ui/card/index.js';
-	import { Button } from '$lib/components/ui/button/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
-	import { Label } from '$lib/components/ui/label/index.js';
 	import * as Form from '$lib/components/ui/form/index.js';
 
 	import { deleteAccount } from '$lib/index';
@@ -68,7 +66,7 @@
 				</div>
 				<div class="flex justify-end pt-2">
 					<Form.Button
-						class="cursor-pointer bg-suggest-blue-700 font-bold text-suggest-white hover:bg-suggest-blue-700/80"
+						class="mt-4 w-full cursor-pointer bg-suggest-blue-700 font-bold text-suggest-white hover:bg-suggest-blue-700/80 md:w-fit"
 						size="lg"
 						disabled>Save Changes</Form.Button
 					>
@@ -89,7 +87,7 @@
 						onclick={deleteAccount}
 						variant="destructive"
 						disabled
-						class="cursor-pointer bg-suggest-warning-400 ">Delete Account</Form.Button
+						class="cursor-pointer bg-suggest-warning-400">Delete Account</Form.Button
 					>
 				</div>
 			</div>

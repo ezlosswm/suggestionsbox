@@ -26,13 +26,13 @@
 
 <section class="mx-auto w-full max-w-4xl border-none shadow-none">
 	<div class="mb-6 flex flex-col items-center gap-2 md:flex-row md:justify-between">
-		<div class="flex flex-col">
+		<div class="flex flex-col gap-2">
 			<h1 class="text-2xl leading-9 font-black -tracking-wide sm:text-3xl">Suggestion Boxes</h1>
 			<p class="text-suggest-slate-600">Manage your active feedback collection channels.</p>
 		</div>
 		<Button
 			href="/profile/box/add"
-			class="w-full cursor-pointer bg-suggest-blue-700 font-bold text-suggest-white hover:bg-suggest-blue-700/80 sm:w-fit"
+			class="mt-6 w-full cursor-pointer bg-suggest-blue-700 font-bold text-suggest-white hover:bg-suggest-blue-700/80 sm:w-1/2 md:w-fit"
 		>
 			<CirclePlus class="size-5" />
 			New Suggestion Box
@@ -42,7 +42,8 @@
 		{#each suggestionBoxes as box}
 			{@render Box(box)}
 		{/each}
-		<div
+		<a
+			href="/profile/box/add"
 			class="group flex min-h-72 w-72 max-w-md cursor-pointer items-center justify-center rounded-xl border-2 border-dashed border-suggest-slate-200 bg-suggest-white transition-colors hover:border-suggest-blue-700"
 		>
 			<div class="p-6 text-center">
@@ -53,10 +54,10 @@
 				</div>
 				<h4 class="font-bold">Create New Box</h4>
 				<p class="mt-1 max-w-[150px] text-xs text-suggest-slate-500">
-					Start collectiong suggestion in secconds.
+					Start collectiong suggestion in seconds.
 				</p>
 			</div>
-		</div>
+		</a>
 	</div>
 </section>
 

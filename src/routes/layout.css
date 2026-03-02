@@ -84,6 +84,7 @@
 	--color-suggest-white: oklch(1 0 0); /* #FFFFFF */
 
 	/* Primary Blue */
+	--color-suggest-blue-100: oklch(87.72% 0.0198 273.206); /* #1111D4 */
 	--color-suggest-blue-700: oklch(0.45 0.27 264); /* #1111D4 */
 
 	/* Slate Scale */

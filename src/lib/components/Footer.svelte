@@ -1,4 +1,4 @@
-<footer class="mt-16 border-t border-suggest-slate-200 px-4 pt-12 pb-4">
+<footer class="relative bottom-0 mt-8 w-full border-t border-suggest-slate-200 p-4">
 	<div class="text-center">
 		<div class="space-y-4">
 			<div class="mx-auto flex w-fit items-center gap-2">
@@ -17,7 +17,7 @@
 			</p>
 		</div>
 
-		<p class="py-8 text-xs text-suggest-slate-500">
+		<p class="pt-8 text-xs text-suggest-slate-500">
 			© {new Date().getFullYear().toString()} SuggestBox Inc. All rights reserved.
 		</p>
 	</div>
