@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
+	import favicon from '$lib/assets/logo.svg';
 	import { navigating } from '$app/state';
 	import { expoOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
