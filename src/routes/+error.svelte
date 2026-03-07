@@ -13,15 +13,25 @@
 <!-- Turn into component -->
 <header class="sticky inset-x-0 top-0 z-10 p-6">
 	<nav class="flex items-center justify-end gap-3">
-		<Button variant="link" href="/" class="text-foreground">Home</Button>
+		<Button aria-label="Home" variant="link" href="/" class="text-foreground">Home</Button>
 
 		{#if session}
-			<Button variant="link" href="/profile" class="text-foreground">Profile</Button>
+			<Button aria-label="Profile" variant="link" href="/profile" class="text-foreground"
+				>Profile</Button
+			>
 		{:else}
-			<Button variant="link" href="/auth/login" class="text-foreground">Login</Button>
+			<Button aria-label="Login" variant="link" href="/auth/login" class="text-foreground"
+				>Login</Button
+			>
 		{/if}
 
-		<Button onclick={toggleMode} variant="outline" size="icon" class="cursor-pointer">
+		<Button
+			aria-label="Toggle theme"
+			onclick={toggleMode}
+			variant="outline"
+			size="icon"
+			class="cursor-pointer"
+		>
 			<SunIcon
 				class="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all! dark:scale-0 dark:-rotate-90"
 			/>

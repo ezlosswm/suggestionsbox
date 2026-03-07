@@ -23,6 +23,8 @@
 	</p>
 
 	<div class="flex justify-end">
-		<Button variant="ghost" class="font-medium text-suggest-blue-700">Join discussion</Button>
+		<Button aria-label="Join discussion" variant="ghost" class="font-medium text-suggest-blue-700"
+			>Join discussion</Button
+		>
 	</div>
 </div>

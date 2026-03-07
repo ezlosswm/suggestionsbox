@@ -67,6 +67,7 @@
 
 		<div class="mb-8 flex space-x-8">
 			<Button
+				aria-label="Share Box"
 				onclick={() => {
 					copyLink(page.url.toString());
 					toast.success('Copied!');
@@ -79,6 +80,7 @@
 			>
 			<form action="?/deleteSuggestionBox" use:enhance method="POST">
 				<Button
+					aria-label="Delete Box"
 					type="submit"
 					variant="secondary"
 					size="lg"
@@ -134,7 +136,7 @@
 						Your voice, <span class="text-suggest-blue-100 italic">untraceable</span>
 					</h1>
 
-					<p class="mx-auto mt-6 max-w-[450px] text-xl text-suggest-blue-100">
+					<p class="mx-auto mt-6 max-w-112.5 text-xl text-suggest-blue-100">
 						We've built a secure tunnel for your thoughts. No logs, no tracking, just complete
 						anonymity.
 					</p>
@@ -183,6 +185,7 @@
 						<div class="mt-8 flex justify-end">
 							<Form.Button
 								disabled={$submitting}
+								aria-label="Submit Suggestion"
 								onclick={() => toast.success('Suggestion submitted successfully!')}
 								class="w-full cursor-pointer bg-suggest-blue-700 text-suggest-white transition-colors hover:bg-suggest-blue-700/80 disabled:bg-suggest-slate-400"
 								size="lg"

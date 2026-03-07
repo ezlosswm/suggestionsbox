@@ -83,6 +83,7 @@
 					<Form.FieldErrors />
 				</Form.Field>
 				<Form.Button
+					aria-label="Create Account"
 					class="cursor-pointer bg-suggest-blue-700 text-suggest-white hover:bg-suggest-blue-700/80"
 				>
 					{#if $submitting}
@@ -102,14 +103,23 @@
 			<span>Or sign in with</span>
 			<div class="h-px flex-1 bg-suggest-slate-200"></div>
 		</div>
-		<Button href="/auth/login/google" variant="outline" class="w-full cursor-pointer">
+		<Button
+			aria-label="Sign Up with Google"
+			href="/auth/login/google"
+			variant="outline"
+			class="w-full cursor-pointer"
+		>
 			<img src={google} alt="Google logo" />
 			Sign Up with Google
 		</Button>
 
 		<div class="text-sm text-suggest-slate-600">
 			Already have an account? <span
-				><Button variant="link" class="text-suggest-slate-600" href="/auth/login">Log In</Button
+				><Button
+					aria-label="Log In"
+					variant="link"
+					class="text-suggest-slate-600"
+					href="/auth/login">Log In</Button
 				></span
 			>
 		</div>

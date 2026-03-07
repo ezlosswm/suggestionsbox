@@ -41,7 +41,9 @@
 			>
 		</div>
 		<Card.Action>
-			<Button variant="link" href="/auth/sign-up" class="cursor-pointer">Sign Up</Button>
+			<Button aria-label="Sign Up" variant="link" href="/auth/sign-up" class="cursor-pointer"
+				>Sign Up</Button
+			>
 		</Card.Action>
 	</Card.Header>
 	<Card.Content>
@@ -76,6 +78,7 @@
 					<Form.FieldErrors />
 				</Form.Field>
 				<Form.Button
+					aria-label="Sign In"
 					class="cursor-pointer bg-suggest-blue-700 text-suggest-white hover:bg-suggest-blue-700/80"
 				>
 					{#if $submitting}
@@ -96,7 +99,12 @@
 			<span>Or sign in with</span>
 			<div class="h-px flex-1 bg-suggest-slate-200"></div>
 		</div>
-		<Button href="/auth/login/google" variant="outline" class="w-full cursor-pointer">
+		<Button
+			aria-label="Sign in with Google"
+			href="/auth/login/google"
+			variant="outline"
+			class="w-full cursor-pointer"
+		>
 			<img src={google} alt="Google logo" />
 			Sign in with Google</Button
 		>

@@ -66,6 +66,8 @@
 				</div>
 				<div class="flex justify-end pt-2">
 					<Form.Button
+						aria-label="Save Changes"
+						type="submit"
 						class="mt-4 w-full cursor-pointer bg-suggest-blue-700 font-bold text-suggest-white hover:bg-suggest-blue-700/80 md:w-fit"
 						size="lg"
 						disabled>Save Changes</Form.Button
@@ -84,6 +86,7 @@
 						</p>
 					</div>
 					<Form.Button
+						aria-label="Delete Account"
 						onclick={deleteAccount}
 						variant="destructive"
 						disabled

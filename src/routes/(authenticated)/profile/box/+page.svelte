@@ -31,6 +31,7 @@
 			<p class="text-suggest-slate-600">Manage your active feedback collection channels.</p>
 		</div>
 		<Button
+			aria-label="Create New Suggestion Box"
 			href="/profile/box/add"
 			class="mt-6 w-full cursor-pointer bg-suggest-blue-700 font-bold text-suggest-white hover:bg-suggest-blue-700/80 sm:w-1/2 md:w-fit"
 		>
@@ -102,7 +103,12 @@
 			</div>
 		</Card.Content>
 		<Card.Footer class="mt-auto">
-			<Button href={suggestionBox.url} variant="default" class="w-full cursor-pointer font-bold">
+			<Button
+				aria-label="View Box"
+				href={suggestionBox.url}
+				variant="default"
+				class="w-full cursor-pointer font-bold"
+			>
 				View Box
 			</Button>
 		</Card.Footer>

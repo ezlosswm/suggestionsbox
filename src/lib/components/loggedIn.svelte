@@ -33,6 +33,7 @@
 		</div>
 
 		<Button
+			aria-label="Copy Share Link"
 			onclick={() => {
 				copyLink();
 				toast.success('Copied!');

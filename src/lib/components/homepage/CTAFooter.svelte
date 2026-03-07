@@ -11,6 +11,7 @@
 		</p>
 
 		<Button
+			aria-label="Start for free today"
 			variant="secondary"
 			class="cursor-pointer text-lg font-black text-suggest-blue-700"
 			size="lg">Start for free today</Button

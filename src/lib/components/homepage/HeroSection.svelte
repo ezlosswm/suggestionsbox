@@ -3,10 +3,10 @@
 	import Card from '$lib/components/homepage/Card.svelte';
 </script>
 
-<div class="mx-auto flex w-full max-w-7xl flex-col gap-12 space-y-8 px-4 lg:flex-row lg:space-y-0">
+<div class="mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 lg:flex-row">
 	<div class="mx-auto max-w-xl space-y-4">
 		<div>
-			<h1 class="text-4xl font-black tracking-tight text-suggest-navy-900 md:text-6xl">
+			<h1 class="min-h-30 text-4xl font-black tracking-tight text-suggest-navy-900 md:text-6xl">
 				Gather feedback that actually
 				<span class="text-suggest-blue-700">matters.</span>
 			</h1>
@@ -16,6 +16,7 @@
 			more messy spreadsheets or lost emails.
 		</p>
 		<Button
+			aria-label="Create your box"
 			class="cursor-pointer bg-suggest-blue-700 px-8 py-6 text-base shadow-lg hover:bg-suggest-blue-700/80 md:text-lg"
 			size="lg">Create Your Box</Button
 		>
